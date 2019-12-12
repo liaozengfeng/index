@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- 页面窗口自动调整到设备宽度，并禁止用户缩放页面 -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=no" />
+
+	<!-- 忽略将页面中的数字识别为电话号码 -->
+  	<meta name="format-detection" content="telephone=no"/>
+  	<!-- 忽略对邮箱地址的识别 -->
+	<meta name="format-detection" content="email=no"/>
+	<!-- 忽略识别页面中的地址 -->
+	<meta name="format-detection" content="adress=no"/>
+	<!-- 渲染械 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+
+	
+	<title>goods</title>
+	<!-- 引入 bootstrap css 文件 -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="iconfont/iconfont.css">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/goods.css">
+</head>
+<body>
+<!-- 引入 js 库文件 -->
+<script type="text/javascript" src='js/jquery-3.2.1.js'></script>
+<script type="text/javascript" src='js/bootstrap.js'></script>
+<script type="text/javascript" src='js/vue.js'></script>
+	<!-- 正文 -->
+	<div class="container-fluid padding-0 ">
+		<!-- =======header ======== -->
+		<header class="xx-header text-center header fixed-top font-size-1rem width-auto  bg-white ">
+			<span class="glyphicon glyphicon-home xjp-pull-left margin-top-1d2rem margin-left-1d6rem " ></span>
+			<div class="search xjp-inline-block content-box h-1rem line-height-1rem pading-top-bottom-d5rem   bg-ccc border-radius-d5rem">
+				<span class="iconfont icon-search padding-left-1rem font-size-d8rem"></span>
+				<input type="text" placeholder="搜索店铺内的商品" class="w-23d5rem line-height-1rem padding-0 margin-0 border-none bg-ccc">
+			</div>
+			<span class="glyphicon glyphicon-list pull-right margin-top-1d2rem margin-right-1d6rem"></span>
+		</header>
+		<!-- =======End header ======== -->
+		<!-- ************************************** -->
+		<!-- 商品列表 -->
+		<div class="goods margin-top-3d9rem margin-bottom-6rem">
+			<ul class="xx-nav-tabs xx-nav">
+				<li class="text-center">
+					<a href="" class="xjp-inline-block font-size-1d2rem active "><span>全部</span></a>
+				</li>
+				<li class="text-center"><a href="" class="xjp-inline-block font-size-1d2rem">人气</a></li>
+				<li class="text-center"><a href="" class="xjp-inline-block font-size-1d2rem">销量</a></li>
+				<li class="text-center"><a href="" class="xjp-inline-block font-size-1d2rem">最新</a></li>
+			</ul>
+			<section class="bg-f8 padding-top-bottom-1rem  clearfix" style="">
+				<ul class="clearfix  goodslist  margin-auto" id="goods_list">
+					<li class="col-xs-6 padding-0 margin-bottom-d75rem" v-for="value in goodLists" >
+						<a v-bind:href='value["href"]'>
+							<img v-bind:src='value["src"]' v-bind:alt='value["alt"]' v-bind:title='value["title"]'>
+						</a>
+						<div class="font-size-1rem ">
+							<p class="margin-top-bottom-1rem "><a v-bind:href='value["href"]'>{{value["info"]}}</a></p>
+							<p class="text-red"><span class="font-size-d8rem">￥</span><span class="font-weight-700">{{value["price"]}}</span></p>
+						</div>
+					</li>
+				</ul>
+			</section>
+		</div>
+		<!-- 商品列表 -->
+	<!-- ************************************************* -->
+	<!-- footer  -->
+		<footer class="fixed-bottom width-auto bg-white" >
+			<ul class="nav clearfix margin-top-d75rem  ">
+				<!-- 活动1 -->
+				<li class=" text-center col-xs-3 padding-0">
+					<a href="javascript:void(0)" class="hover-text-red">
+						<figure class="margin-bottom-d5rem   relative margin-auto">
+							<span class="iconfont icon-unie60d  margin-auto font-size-1d5rem"></span>
+						</figure>
+						<p class="font-size-d8rem">活动</p>
+					</a>
+				</li>
+				<!-- 一键wifi2 -->
+				<li class=" text-center col-xs-3 padding-0">
+					<a href="javascript:void(0)" class="hover-text-red">
+						<figure class="margin-bottom-d5rem  relative margin-auto font-size-1d5rem">
+							<span class="iconfont icon-shangquanzhekou margin-auto font-size-1d5rem"></span>
+						</figure>
+						<p class="font-size-d8rem">商圈</p>
+					</a>
+				</li>
+				<!-- 导航3 -->
+				<li class=" text-center col-xs-3 padding-0">
+					<a href="javascript:void(0)" class="hover-text-red">
+						<figure class="margin-bottom-d5rem   relative margin-auto">
+							<span class="iconfont icon-woshou margin-auto font-size-1d5rem"></span>
+						</figure>
+						<p class="font-size-d8rem">约</p>
+					</a>
+				</li>
+				<!-- 停车缴费4 -->
+				<li class=" text-center col-xs-3 padding-0">
+					<a href="javascript:void(0)" class="hover-text-red">
+						<figure class="margin-bottom-d5rem  relative margin-auto">
+							<span class="iconfont icon-yonghu margin-auto font-size-1d5rem"></span>
+						</figure>
+						<p class="font-size-d8rem">我的</p>
+					</a>
+				</li>
+			</ul>
+		</footer>
+	<!--End footer -->
+	</div>
+<script type="text/javascript" src="js/goods.js"></script>
+</body>
+</html>

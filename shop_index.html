@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- 页面窗口自动调整到设备宽度，并禁止用户缩放页面 -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=no" />
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+	<!-- 忽略将页面中的数字识别为电话号码 -->
+  	<meta name="format-detection" content="telephone=no"/>
+  	<!-- 忽略对邮箱地址的识别 -->
+	<meta name="format-detection" content="email=no"/>
+	<!-- 忽略识别页面中的地址 -->
+	<meta name="format-detection" content="adress=no"/>
+	<!-- 渲染械 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+
+	
+	<title>某商圈</title>
+	<!-- 引入 bootstrap css 文件 -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+	<link rel="stylesheet" href="iconfont/iconfont.css">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<!-- 引入 js 库文件 -->
+<script type="text/javascript" src='js/jquery-3.2.1.js'></script>
+<script type="text/javascript" src='js/bootstrap.js'></script>
+	<!-- 正文 -->
+	<div class="container-fluid padding-0 ">
+		<!-- =======header ======== -->
+		<header class="xx-header header text-center fixed-top font-size-1rem width-auto  bg-white ">
+			<span class="glyphicon glyphicon-home xjp-pull-left margin-top-1d2rem margin-left-1d6rem " ></span>
+			<span class="hover-text-red">商圈</span>
+			<span class="glyphicon glyphicon-search pull-right margin-top-1d2rem margin-right-1d6rem"></span>
+		</header>
+		<!-- =======End header ======== -->
+
+		<!-- ********banner***************** -->
+		<section class="xx-banner xx-top-banner banner carousel slide margin-bottom-1rem margin-top-3d9rem" id="top_banner" data-ride="carousel">
+			<!-- banner tabs -->
+			<ol class="carousel-indicators">
+			    <li data-target="#top_banner" data-slide-to="0" class="active"></li>
+			    <li data-target="#top_banner" data-slide-to="1"></li>
+			    <li data-target="#top_banner" data-slide-to="2"></li>
+			</ol>
+			<!--End banner tabs -->
+			<!-- banner inner  -->
+			<div class="carousel-inner" role="listbox">
+			   	<div class="item active">
+			      	<img src="images/banner1.png" alt="中电广场">
+			     	<div class="carousel-caption">
+			     		<p>中电广场</p>
+			    	</div>
+			    </div>
+			    <div class="item ">
+			      	<img src="images/banner1.png" alt="中电广场">
+			     	<div class="carousel-caption">
+			     		<p>中戏广场</p>
+			    	</div>
+			    </div>
+			    <div class="item ">
+			      	<img src="images/banner1.png" alt="中电广场">
+			     	<div class="carousel-caption">
+			     		<p>北电广场</p>
+			    	</div>
+			    </div>
+			</div>
+			<!--End banner inner  -->
+			<!-- banner arrow -->
+			<div class="banner-arrow">
+				<a class="left carousel-control" href="#top_banner" id="left_arrow" role="button" data-slide="prev">
+				    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				    <span class="sr-only">Previous</span>
+				</a>
+				<a class="right carousel-control" id="right_arrow" href="#top_banner" role="button" data-slide="next">
+				    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				    <span class="sr-only">Next</span>
+				</a>
+			</div>
+			<!-- End banner arrow -->
+		</section>
+		<!-- *********End banner****************** -->
+		<!-- ==========寻物广播=========================== -->
+		<section class="xx-radio-broadcast font-size-d9rem">
+			<span class="xx-title bg-warning text-white">寻物信息</span>
+			<span >王先生在商场三楼上洗手间时，将手机遗忘在洗漱台上，有推到的顾客 ，请主动联系商场服务台，联系电话：6658999，谢谢</span>
+		</section>
+		<!-- ==========End 寻物广播=========================== -->
+
+		<!-- *************** nav******************* -->
+		<nav class="nav xx-nav margin-bottom-1d25rem">
+			<ul class="clearfix">
+				<!-- 活动 -->
+				<li class="text-center col-xs-3 hover-text-red">
+					<a href="javascript:void(0)" class="hover-text-red">
+						<figure class="figure-icon margin-top-bottom-1d25rem w-h-100 bg-ff6853 relative margin-auto hover-text-red">
+							<span class="iconfont icon-unie60d w-h-2d5rem absolute-auto margin-auto font-size-2d5rem "></span>
+						</figure>
+						<p>活动</p>
+					</a>
+				</li>
+				<!-- 一键wifi -->
+				<li class="text-center col-xs-3 hover-text-red">
+					<a href="javascript:void(0)" class="hover-text-red">
+						<figure class="figure-icon margin-top-bottom-1d25rem w-h-100 bg-6fb9fe relative margin-auto">
+							<span class="iconfont icon-wifi absolute-auto margin-auto w-h-2d5rem font-size-2d5rem"></span>
+						</figure>
+						<p>一键WIFI</p>
+					</a>
+				</li>
+				<!-- 导航 -->
+				<li class="text-center col-xs-3 hover-text-red ">
+					<a href="javascript:void(0)" class="hover-text-red">
+						<figure class="figure-icon margin-top-bottom-1d25rem w-h-100 bg-59dc87 relative margin-auto">
+							<span class="iconfont icon-zhinanzhen absolute-auto margin-auto w-h-2d5rem font-size-2d5rem"></span>
+						</figure>
+						<p>导航</p>
+					</a>
+				</li>
+				<!-- 停车缴费 -->
+				<li class="text-center col-xs-3 hover-text-red">
+					<a href="javascript:void(0)" class="hover-text-red">
+						<figure class="figure-icon margin-top-bottom-1d25rem w-h-100 bg-d6852f relative margin-auto">
+							<span class="iconfont icon-youhui absolute-auto margin-auto w-h-2d5rem font-size-2d5rem"></span>
+						</figure>
+						<p>停车缴费</p>
+					</a>
+				</li>
+				<!--  品牌 -->
+				<li class="text-center col-xs-3 hover-text-red">
+					<a href="javascript:void(0)" class="hover-text-red">
+						<figure class="figure-icon margin-top-bottom-1d25rem w-h-100 bg-ff9a30 relative margin-auto">
+							<span class="iconfont icon-pinpai- absolute-auto margin-auto w-h-2d5rem font-size-2d5rem"></span>
+						</figure>
+						<p>品牌</p>
+					</a>
+				</li>
+				<!-- 卡券 -->
+				<li class="text-center col-xs-3 hover-text-red">
+					<a href="javascript:void(0)" class="hover-text-red">
+						<figure class=" figure-icon margin-top-bottom-1d25rem w-h-100 bg-ffd229 relative margin-auto">
+							<span class="iconfont icon-qiaquan absolute-auto margin-auto w-h-2d5rem font-size-2d5rem"></span>
+						</figure>
+						<p>卡券</p>
+					</a>
+				</li>
+				<!-- 团购 -->
+				<li class="text-center col-xs-3 hover-text-red">
+					<a href="javascript:void(0)" class="hover-text-red">
+						<figure class="figure-icon margin-top-bottom-1d25rem w-h-100 bg-fd976c relative margin-auto">
+							<span class="iconfont icon-tuangou absolute-auto margin-auto w-h-2d5rem font-size-2d5rem"></span>
+						</figure>
+						<p>团购</p>
+					</a>
+				</li>
+				<!-- 优惠 -->
+				<li class="text-center col-xs-3 hover-text-red">
+					<a href="javascript:void(0)" class="hover-text-red">
+						<figure class="figure-icon margin-top-bottom-1d25rem w-h-100 bg-8594d9 relative margin-auto">
+							<span class="iconfont icon-iconhui absolute-auto margin-auto w-h-2d5rem font-size-2d5rem"></span>
+						</figure>
+						<p>优惠</p>
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<!-- ***************End nav******************* -->
+		<!-- 卖场  -->
+		<div class="margin-bottom-6rem">
+			<!-- 标题 -->
+			<div class="page-header xx-page-header text-center text-red padding-0 margin-auto margin-top-2rem margin-bottom-1rem">
+			 	<h1 class="padding-0">主题馆</h1>
+			</div>
+			<!-- 美食专场 -->
+			<section class="theme xx-food margin-auto margin-bottom-1rem">
+		  		<div class="xx-food-body theme-body">
+		  			<img src="images/xx_food.png" class="img-responsive" alt="">
+		  		</div>
+		  		<div class="xx-food-footer theme-footer clearfix">
+			   		<ul>
+			   			<li class="col-xs-4 padding-0 ">
+			   				<img src="images/xx_food_01.png" class="img-responsive margin-auto margin-top-bottom-1d5rem" alt="">
+			   			</li>
+			   			<li class="col-xs-4 padding-0 ">
+			   				<img src="images/xx_food_02.png" class="img-responsive margin-auto margin-top-bottom-1d5rem" alt="">
+			   			</li>
+			   			<li class="col-xs-4 padding-0 ">
+			   				<img src="images/xx_food_03.png" class="img-responsive margin-auto margin-top-bottom-1d5rem " alt="">
+			   			</li>
+			   		</ul>
+		  		</div>
+			</section>
+		<!--End 美食专场 -->
+		<!-- 运动卖场 -->
+			<section class="theme xx-motion margin-auto margin-bottom-1rem">
+		  		<div class="xx-motion-body theme-body">
+		  			<img src="images/xx_motion.png" class="img-responsive" alt="">
+		  		</div>
+		  		<div class="xx-motion-footer theme-footer clearfix">
+			   		<ul>
+			   			<li class="col-xs-4 padding-0 ">
+			   				<img src="images/xx_motion_01.png" class="img-responsive margin-auto margin-top-bottom-1d5rem" alt="">
+			   			</li>
+			   			<li class="col-xs-4 padding-0 ">
+			   				<img src="images/xx_motion_02.png" class="img-responsive margin-auto margin-top-bottom-1d5rem" alt="">
+			   			</li>
+			   			<li class="col-xs-4 padding-0 ">
+			   				<img src="images/xx_motion_03.png" class="img-responsive margin-auto margin-top-bottom-1d5rem " alt="">
+			   			</li>
+			   		</ul>
+		  		</div>
+			</section>
+		<!--End 运动卖场 -->
+		<!-- 厨具专场 -->
+			<section class="theme xx-kitchenWare margin-auto margin-bottom-1rem">
+		  		<div class="xx-kitchenWare-body theme-body">
+		  			<img src="images/xx_kitchenWare.png" class="img-responsive" alt="">
+		  		</div>
+		  		<div class="xx-kitchenWare-footer theme-footer clearfix">
+			   		<ul>
+			   			<li class="col-xs-4 padding-0 ">
+			   				<img src="images/xx_kitchenWare_01.png" class="img-responsive margin-auto margin-top-bottom-1d5rem" alt="">
+			   			</li>
+			   			<li class="col-xs-4 padding-0 ">
+			   				<img src="images/xx_kitchenWare_02.png" class="img-responsive margin-auto margin-top-bottom-1d5rem" alt="">
+			   			</li>
+			   			<li class="col-xs-4 padding-0 ">
+			   				<img src="images/xx_kitchenWare_03.png" class="img-responsive margin-auto margin-top-bottom-1d5rem " alt="">
+			   			</li>
+			   		</ul>
+		  		</div>
+			</section>
+		<!--End 厨具专场 -->
+		</div>
+	<!-- 专场主题 结束 -->
+	<!-- ************************************************* -->
+	<!-- footer  -->
+		<footer class="fixed-bottom width-auto bg-white" style="max-width:650px;">
+			<ul class="nav clearfix margin-top-d75rem  ">
+				<!-- 活动1 -->
+				<li class=" text-center col-xs-3 padding-0">
+					<a href="javascript:void(0)" class="hover-text-red" cls='shop'>
+						<figure class="margin-bottom-d5rem   relative margin-auto">
+							<span class="iconfont icon-unie60d  margin-auto font-size-1d5rem"></span>
+						</figure>
+						<p class="font-size-d8rem">首页</p>
+					</a>
+				</li>
+				<!-- 一键wifi2 -->
+				<li class=" text-center col-xs-3 padding-0">
+					<a href="javascript:void(0)" class="hover-text-red" cls='sort'>
+						<figure class="margin-bottom-d5rem  relative margin-auto font-size-1d5rem">
+							<span class="iconfont icon-shangquanzhekou margin-auto font-size-1d5rem"></span>
+						</figure>
+						<p class="font-size-d8rem">分类</p>
+					</a>
+				</li>
+				<!-- 导航3 -->
+				<li class="text-center col-xs-3 padding-0">
+					<a href="javascript:void(0)" class="hover-text-red" cls='cart'>
+						<figure class="margin-bottom-d5rem   relative margin-auto">
+							<span class="iconfont icon-woshou margin-auto font-size-1d5rem"></span>
+						</figure>
+						<p class="font-size-d8rem">购物车</p>
+					</a>
+				</li>
+				<!-- 停车缴费4 -->
+				<li class=" text-center col-xs-3 padding-0">
+					<a href="javascript:void(0)" class="hover-text-red" cls='user'>
+						<figure class="margin-bottom-d5rem  relative margin-auto">
+							<span class="iconfont icon-yonghu margin-auto font-size-1d5rem"></span>
+						</figure>
+						<p class="font-size-d8rem">我的</p>
+					</a>
+				</li>
+			</ul>
+		</footer>
+	<!--End footer -->
+	</div>
+<script>
+	$(function(){
+		var touchsPageX = [];
+		$(".carousel").on("touchstart",function(){
+			touchsPageX[0] = event.touches[0].pageX;
+			$(this).find(".carousel-inner").mousemove()
+		})
+		$(".carousel").on("touchend",function(){
+			var changedTouchesPageX = event.changedTouches[0].pageX
+			var Dvalue = changedTouchesPageX - touchsPageX[0];
+			if (Dvalue > 0){
+				console.log($(this).find(".right"))
+				$(this).find(".left").click()
+			}else if (Dvalue < 0){
+				$(this).find(".right").click()
+			}
+		})
+	})
+</script>
+<script>
+	mui(".text-center").on('tap','.hover-text-red',function(){
+		var url;
+		if($(this).attr("cls")=='user'){
+			url='shoplist.html';
+		}else if($(this).attr("cls")=='sort'){
+			url='shoplist.html';
+		}else if($(this).attr("cls")=='cart'){
+			url='shoplist.html';
+		}else if($(this).attr("cls")=='shop'){
+			url='shop_index.html';
+		}	
+	
+	  mui.openWindow({
+	    url:url
+	  });
+	}) 
+</script>
+</body>
+</html>

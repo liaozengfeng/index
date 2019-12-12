@@ -1,0 +1,127 @@
+html{
+	font-size:10px;/* 62.5% */
+}
+@media only screen and (min-width:481px){
+	html{
+		font-size:15.04px !important;/*15.04/16 =94% */
+	}
+}
+@media only screen and (min-width:561px){
+	html{
+		font-size:17.44px !important;/*17.44/16 = 109% */
+	}
+}
+@media only screen and (min-width:641px){
+	html{
+		font-size:20px !important;/*20/16 =125% */
+	}
+}
+body{
+	max-width:650px;
+	margin:auto;
+}
+
+/*=============================================*/
+
+/*header*/
+.xx-header{
+	height: 3.9rem;
+	line-height: 3.9rem;
+	max-width:650px;
+	z-index: 2;
+}
+/* End header */
+/*=============================================*/
+
+/*top_banner*/
+/*暂空 不用写*/
+/*End top_banner*/
+
+/*==================================================*/
+/* radio-broadcast 广播*/
+.xx-radio-broadcast{
+	line-height: 2rem;
+	letter-spacing:0.35rem;
+}
+.xx-radio-broadcast .xx-title{
+	padding:0.3rem 0.6rem;
+	background: #ffc971;
+	margin-right:1.5rem;
+	border-radius:.2rem;
+}
+/* End radio-broadcast 广播*/
+/*======================================*/
+
+/* ================ nav =======================*/
+.xx-nav{
+	font-size:.8rem;
+}
+.figure-icon{
+
+}
+.w-h-100{
+	width:5rem;
+	height: 5rem;
+	border-radius: 50%;
+}
+.figure-icon .iconfont,
+.figure-icon .glyphicon
+{
+	/*width:2.5rem;
+	height: 2.5rem;
+	font-size:1.6rem;*/
+	color:#fff;
+}
+.w-h-2d5rem{
+	width:2.5rem;
+	height: 2.5rem;
+	color:#fff;
+}
+/* ================End nav =======================*/
+/* 页头 */
+.xx-page-header{
+	background: url("../images/xx_02.png");
+	height: 3.3rem;
+	line-height: 3.3rem;
+}
+
+.xx-page-header h1{
+	width:100%;
+	height: 100%;
+	line-height: 3.3rem;
+}
+/*End 页头*/
+
+/*专场*/
+.theme{
+	width:30rem;
+}
+.xx-kitchenWare-body,
+.xx-food-body{
+
+}
+.theme-footer{
+	box-shadow:.2rem .2rem  .75rem  #ddd;
+	border-radius: 0 0 1rem 1rem;
+}
+.theme-footer li img{
+	width:7.7rem;
+}
+
+/*footer*/
+footer{
+	box-shadow:0px -.2rem  .75rem   #ccc;
+}
+
+/*公用样式 有针对的补充 */
+.hover-text-red:hover .iconfont{
+	color:red;
+}
+
+/*试验*/
+.aaa{
+	height: 54px;
+	line-height: 54px;
+	background: #ccc;
+
+}
