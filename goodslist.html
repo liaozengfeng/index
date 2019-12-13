@@ -71,46 +71,47 @@
 		<!-- 商品列表 -->
 	<!-- ************************************************* -->
 	<!-- footer  -->
-	<footer class="fixed-bottom width-auto bg-white" style="max-width:650px;">
-		<ul class="nav clearfix margin-top-d75rem  ">
-			<!-- 活动1 -->
-			<li class=" text-center col-xs-3 padding-0">
-				<a href="javascript:void(0)" class="hover-text-red" cls='shop'>
-					<figure class="margin-bottom-d5rem   relative margin-auto">
-						<span class="iconfont icon-unie60d  margin-auto font-size-1d5rem"></span>
-					</figure>
-					<p class="font-size-d8rem">首页</p>
-				</a>
-			</li>
-			<!-- 一键wifi2 -->
-			<li class=" text-center col-xs-3 padding-0">
-				<a href="javascript:void(0)" class="hover-text-red" cls='sort'>
-					<figure class="margin-bottom-d5rem  relative margin-auto font-size-1d5rem">
-						<span class="iconfont icon-shangquanzhekou margin-auto font-size-1d5rem"></span>
-					</figure>
-					<p class="font-size-d8rem">商品</p>
-				</a>
-			</li>
-			<!-- 导航3 -->
-			<li class="text-center col-xs-3 padding-0">
-				<a href="javascript:void(0)" class="hover-text-red" cls='cart'>
-					<figure class="margin-bottom-d5rem   relative margin-auto">
-						<span class="iconfont icon-woshou margin-auto font-size-1d5rem"></span>
-					</figure>
-					<p class="font-size-d8rem">购物车</p>
-				</a>
-			</li>
-			<!-- 停车缴费4 -->
-			<li class=" text-center col-xs-3 padding-0">
-				<a href="javascript:void(0)" class="hover-text-red" cls='user'>
-					<figure class="margin-bottom-d5rem  relative margin-auto">
-						<span class="iconfont icon-yonghu margin-auto font-size-1d5rem"></span>
-					</figure>
-					<p class="font-size-d8rem">我的</p>
-				</a>
-			</li>
-		</ul>
-	</footer>
+		<footer class="fixed-bottom width-auto bg-white" style="max-width:650px;">
+			<ul class="nav clearfix margin-top-d75rem  ">
+				<!-- 活动1 -->
+				<li class=" text-center col-xs-3 padding-0">
+					<a href="javascript:void(0)" class="hover-text-red" cls='shop'>
+						<figure class="margin-bottom-d5rem   relative margin-auto">
+							<span class="iconfont icon-unie60d  margin-auto font-size-1d5rem"></span>
+						</figure>
+						<p class="font-size-d8rem">首页</p>
+					</a>
+				</li>
+				<!-- 一键wifi2 -->
+				<li class=" text-center col-xs-3 padding-0">
+					<a href="javascript:void(0)" class="hover-text-red" cls='sort'>
+						<figure class="margin-bottom-d5rem  relative margin-auto font-size-1d5rem">
+							<span class="iconfont icon-shangquanzhekou margin-auto font-size-1d5rem"></span>
+						</figure>
+						<p class="font-size-d8rem">分类</p>
+					</a>
+				</li>
+				
+				<!-- 导航3 -->
+				<li class="text-center col-xs-3 padding-0">
+					<a href="javascript:void(0)" class="hover-text-red" cls='cart'>
+						<figure class="margin-bottom-d5rem   relative margin-auto">
+							<span class="iconfont icon-woshou margin-auto font-size-1d5rem"></span>
+						</figure>
+						<p class="font-size-d8rem">购物车</p>
+					</a>
+				</li>
+				<!-- 停车缴费4 -->
+				<li class=" text-center col-xs-3 padding-0">
+					<a href="javascript:void(0)" class="hover-text-red" cls='user'>
+						<figure class="margin-bottom-d5rem  relative margin-auto">
+							<span class="iconfont icon-yonghu margin-auto font-size-1d5rem"></span>
+						</figure>
+						<p class="font-size-d8rem">我的</p>
+					</a>
+				</li>
+			</ul>
+		</footer>	<!--End footer -->
 	<!--End footer -->
 	</div>
 <script type="text/javascript" src="js/goods.js"></script>
@@ -122,11 +123,11 @@
 		if($(this).attr("cls")=='user'){
 			url='new-mine.html';
 		}else if($(this).attr("cls")=='sort'){
-			url='goodslist.html';
+			url='shoplist.html';
 		}else if($(this).attr("cls")=='cart'){
 			url='new-shopping-card.html';
 		}else if($(this).attr("cls")=='shop'){
-			url='shop_index.html';
+			url='index.html';
 		}	
 	
 	  mui.openWindow({

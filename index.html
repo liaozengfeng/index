@@ -140,7 +140,6 @@
 								<div class="mui-card-header mui-card-media" style="height:40vw;"><img class="w100" src="images/list-ph01.png" /></div>
 								<div class="mui-card-content">
 									<div class="mui-card-content-inner">
-										
 										<p style="color: #333;">韩版青少年休闲修身长袖紧身衬衫</p>
 									</div>
 								</div>
@@ -195,15 +194,15 @@
 		if($(this).attr("cls")=='user'){
 			url='new-mine.html';
 		}else if($(this).attr("cls")=='sort'){
-			url='goodslist.html';
-		}else if($(this).attr("cls")=='cart'){
 			url='shoplist.html';
+		}else if($(this).attr("cls")=='cart'){
+			url='new-shopping-card.html';
 		}else if($(this).attr("cls")=='shop'){
 			url='index.html';
 		}	
 	
 	  mui.openWindow({
-		url:url
+	    url:url
 	  });
 	}) 
 </script>
