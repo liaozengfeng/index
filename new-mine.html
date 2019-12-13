@@ -63,18 +63,13 @@
 				
 				<ul class="mui-table-view">
 					<li class="mui-table-view-cell">
-						<a href="new-my-news.html" class="mui-navigate-right">
+						<a href="javascript:;" class="mui-navigate-right" abc='news'>
 							我的消息
 						</a>
 					</li>
 					<li class="mui-table-view-cell">
-						<a href="new-address.html" class="mui-navigate-right">
+						<a href="javascript:;" class="mui-navigate-right" def='add'>
 							地址管理
-						</a>
-					</li>
-					<li class="mui-table-view-cell">
-						<a class="mui-navigate-right">
-							联系客服
 						</a>
 					</li>
 				</ul>
@@ -117,6 +112,18 @@
 		}else if($(this).attr("cls")=='shop'){
 			url='index.html';
 		}	
+	
+	  mui.openWindow({
+	    url:url
+	  });
+	}) 
+	mui(".mui-table-view").on('tap','.mui-navigate-right',function(){
+		var url;
+		if($(this).attr("abc")=='news'){
+			url='new-my-news.html';
+		}else if($(this).attr("def")=='add'){
+			url='new-address.html';
+		}
 	
 	  mui.openWindow({
 	    url:url

@@ -94,7 +94,7 @@
 				<ul class="total_amount">
 					<li style="display: flex;">合计：<p id="total_price">¥<b>0</b></p></li>
 					<li style="display: flex;">
-						<a class="settle_btn" href="javascript:void(0);" id="confirm_cart">结算</a>
+						<a class="settle_btn" href="javascript:void(0);" id="confirm_cart" acc='sett'>结算</a>
 					</li>
 				</ul>
 				<a class="settle_btn" href="javascript:void(0);" id="confirm_cart1" onclick="big_cart_remove()">删除</a>
@@ -423,6 +423,16 @@
 		}else if($(this).attr("cls")=='shop'){
 			url='index.html';
 		}	
+	
+	  mui.openWindow({
+		url:url
+	  });
+	}) 
+	mui(".settle_box").on('tap','.settle_btn',function(){
+		var url;
+		if($(this).attr("acc")=='sett'){
+			url='new-buy.html';
+		}
 	
 	  mui.openWindow({
 		url:url
