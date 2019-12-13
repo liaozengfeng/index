@@ -9,6 +9,7 @@
     <script type="text/javascript" charset="utf-8">
       	mui.init();
     </script>
+	<script src='js/custom.js'></script>
 	<!-- 忽略将页面中的数字识别为电话号码 -->
   	<meta name="format-detection" content="telephone=no"/>
   	<!-- 忽略对邮箱地址的识别 -->
@@ -258,7 +259,7 @@
 						<figure class="margin-bottom-d5rem  relative margin-auto font-size-1d5rem">
 							<span class="iconfont icon-shangquanzhekou margin-auto font-size-1d5rem"></span>
 						</figure>
-						<p class="font-size-d8rem">分类</p>
+						<p class="font-size-d8rem">商品</p>
 					</a>
 				</li>
 				<!-- 导航3 -->
@@ -306,9 +307,9 @@
 	mui(".text-center").on('tap','.hover-text-red',function(){
 		var url;
 		if($(this).attr("cls")=='user'){
-			url='shoplist.html';
+			url='new-mine.html';
 		}else if($(this).attr("cls")=='sort'){
-			url='shoplist.html';
+			url='goodslist.html';
 		}else if($(this).attr("cls")=='cart'){
 			url='shoplist.html';
 		}else if($(this).attr("cls")=='shop'){
@@ -316,7 +317,7 @@
 		}	
 	
 	  mui.openWindow({
-	    url:url
+		url:url
 	  });
 	}) 
 </script>
