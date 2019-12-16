@@ -87,8 +87,8 @@
 			<!--新款发售-->
 			<div class="new-pattern">
 				<img class="w100" class="home-imgtit" src="images/hometit1.jpg" alt="" />
-				<ul class="pattern-list">
-					<li class="mui-card-footer">
+				 <ul class="pattern-list" id='add'>
+					<!--<li class="mui-card-footer">
 						<div class="mui-card">
 							<a href="examples/new-personal-details.html">
 								<div class="mui-card-header mui-card-media" style="height:40vw;"><img class="w100" src="images/list-ph01.png" /></div>
@@ -149,7 +149,7 @@
 								</div>
 							</a>
 						</div>
-					</li>
+					</li> -->
 				</ul>
 			</div>
 		</div>
@@ -205,4 +205,46 @@
 	    url:url
 	  });
 	}) 
+	
+	url='http://www.wzc.com/app/list';
+		var data=ajax(url);
+		address(ajax(url));
+		function address(data){
+			$(".pattern-list").empty();
+			var str='<li class="mui-card-footer">';
+			$.each(data,function(index){
+				// str+="<li class='col-xs-6 padding-0 margin-bottom-d75rem' v-for='value in goodLists'><a v-bind:href='value['href']'><img v-bind:src='http://www.wzc.com/app/list/"+$(this).attr('shop_img')+"' v-bind:alt='value['alt']' v-bind:title='+$(this).attr('shop_name')+'></a><div class='font-size-1rem'><p class='margin-top-bottom-1rem'><a v-bind:href='value['href']'>"+$(this).attr('shop_name')+"</a></p><p class=''text-red'><span class=''font-size-d8rem'>￥</span><span class='font-weight-700'>"+$(this).attr('shop_price')+"</span></p></div></li>";
+				str+="<div class='mui-card'><a href='goodslist-details.html?id="+$(this).attr('goods_id')+"'><div class='mui-card-header mui-card-media' style='height:40vw;'><img class='w100' src='images/list-ph01.png'/></div><div class='mui-card-content'><div class='mui-card-content-inner'><p style='color: #333;'>"+$(this).attr('goods_name')+"</p></div></div><div class='pattern-list__p'><p class='font-color-pink'>￥<label>"+$(this).attr('goods_pirce')+"</label></p><p>库存:<label>"+$(this).attr('goods_stock')+"</label></p></div></a></div>";
+			})
+			 str+='</li>';
+			$(".pattern-list").html(str);
+		}
+		
+		function ajax(url,data=''){
+			var datainfo;
+			if(data==''){
+				$.ajax({
+					method:"POST",
+					url:url,
+					dataType: "json",
+					async:false,
+					success:function (res) {
+						datainfo=res;
+					}
+				})
+			}else{
+				$.ajax({
+					method:"POST",
+					url:url,
+					data:data,
+					dataType: "json",
+					async:false,
+					success:function (res) {
+						datainfo=res;
+					}
+				})
+			}
+			return datainfo;
+		}
+		 
 </script>
