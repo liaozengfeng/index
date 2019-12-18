@@ -12,7 +12,6 @@
 		<link rel="stylesheet" type="text/css" href="css/app.css" />
 		<link href="css/mui.picker.css" rel="stylesheet" />
 		<link href="css/mui.poppicker.css" rel="stylesheet" />
-		
 	</head>
 	<body>
 		<header class="mui-bar mui-bar-nav">
@@ -30,8 +29,22 @@
 					<input type="text" class="mui-input-clear" placeholder="请输入手机号" data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
 				</div>
 				<div id="showCityPicker3">
-					<label>所在地区：</label>
-					<div id="cityResult3" class="ui-alert"></div>
+					<label>地区：</label>
+					<div id="cityResult3" class="ui-alert">
+						<select name="" class="mui-input-clear province" address='province'>
+							<option value="">--请选择--</option>
+						</select>	
+					</div>
+					<div id="cityResult3" class="ui-alert" >
+						<select name="" class="mui-input-clear city"address='city'>
+							<option value="">--请选择--</option>
+						</select>	
+					</div>
+					<div id="cityResult3" class="ui-alert">
+						<select name="" class="mui-input-clear county" address='county'>
+							<option value="">--请选择--</option>
+						</select>	
+					</div>
 				</div>
 				<div class="mui-input-row">
 					<label>详细地址：</label>
@@ -46,50 +59,61 @@
 							<div class="mui-switch-handle"></div>
 						</div>
 					</li>
-					
 				</ul>
 			</div>
 		</div>
 		<div class="preservation"><a href="new-address.html">保存</a></div>
-		
+		<script src='js/jquery-3.2.1.js'></script>
 		<script src="js/mui.min.js"></script>
-		<!--<script src="../js/mui.picker.min.js"></script>-->
-		<script src="js/mui.picker.js"></script>
-		<script src="js/mui.poppicker.js"></script>
-		<script src="js/city.data.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
 		<script>
-			(function($, doc) {
-				$.init();
-				$.ready(function() {
-					var cityPicker3 = new $.PopPicker({
-						layer: 3
-					});
-					cityPicker3.setData(cityData3);
-					var showCityPickerButton = doc.getElementById('showCityPicker3');
-					var cityResult3 = doc.getElementById('cityResult3');
-					showCityPickerButton.addEventListener('tap', function(event) {
-						cityPicker3.show(function(items) {
-							cityResult3.innerText = "" + (items[0] || {}).text + " " + (items[1] || {}).text + " " + (items[2] || {}).text;
-							//返回 false 可以阻止选择框的关闭
-							//return false;
-						});
-					}, false);
-				});
-			})(mui, document);
-		</script>
-		<script>
-			mui.init({
-				swipeBack:true //启用右滑关闭功能
-			});
-			mui('.mui-content .mui-switch').each(function() { 
-				this.parentNode.querySelector('span').innerText = '设为默认：' + (this.classList.contains('mui-active') ? '' : '');
-				
-				this.addEventListener('toggle', function(event) {
-					//event.detail.isActive 可直接获取当前状态
-					this.parentNode.querySelector('span').innerText = '设为默认：' + (event.detail.isActive ? '' : '');
-				});
-			});
+			var url='http://47.93.25.230/origin/index';
+			var data=ajax(url);
+			address(ajax(url));
+			function address(data,address='province'){
+				$("."+address).empty();
+				var str="<option value=''>--请选择--</option>";
+				$.each(data,function(){
+					str+="<option value='"+$(this).attr('id')+"'>"+$(this).attr('name')+"</option>";
+				})
+				$("."+address).append().html(str)
+			}
+			function ajax(url,data=''){
+				var datainfo;
+				if(data==''){
+					$.ajax({
+						method:"POST",
+						url:url,
+						dataType: "json",
+						async:false,
+						success:function (res) {
+							datainfo=res;
+						}
+					})
+				}else{
+					$.ajax({
+						method:"POST",
+						url:url,
+						data:data,
+						dataType: "json",
+						async:false,
+						success:function (res) {
+							datainfo=res;
+						}
+					})
+				}
+				return datainfo;
+			}
+			
+			$(document).on("change",".mui-input-clear",function(){
+				var addres=$(this).parent('div').next('.ui-alert').find('select').attr('address');
+				var asc=$(this).attr("address");
+				if(asc!='county'){
+					var data_id={};
+					data_id.pid=$(this).val();
+					info=ajax(url,data_id);
+					address(info,addres);
+				}
+			})
 		</script>
 	</body>
 </html>

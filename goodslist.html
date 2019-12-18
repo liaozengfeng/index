@@ -28,9 +28,10 @@
 </head>
 <body>
 <!-- 引入 js 库文件 -->
-<script type="text/javascript" src='js/jquery-3.2.1.js'></script>
+<!-- <script type="text/javascript" src='js/jquery-3.2.1.js'></script> -->
+<script src='js/jquery.min.js'></script>
 <script type="text/javascript" src='js/bootstrap.js'></script>
-<script type="text/javascript" src='js/vue.js'></script>
+<!-- <script type="text/javascript" src='js/vue.js'></script> -->
 	<!-- 正文 -->
 	<div class="container-fluid padding-0 ">
 		<!-- =======header ======== -->
@@ -66,6 +67,7 @@
 						</div>
 					</li>
 				</ul>
+				
 			</section>
 		</div>
 		<!-- 商品列表 -->
@@ -114,9 +116,111 @@
 		</footer>	<!--End footer -->
 	<!--End footer -->
 	</div>
-<script type="text/javascript" src="js/goods.js"></script>
+<!-- <script type="text/javascript" src="js/goods.js"></script> -->
 </body>
 </html>
+
+<script>
+	var where={};
+	var usrl=window.location.href;
+	var sort_id=usrl.split("=");
+	where.sort_id=sort_id[1];
+	url='http://47.93.25.230/goods/goodslist';
+	var data=ajax(url,where);
+	address(ajax(url));
+	function address(data){
+		$(".padding-top-bottom-1rem").empty();
+		var str='';
+		$.each(data,function(k,v){
+			str+="<li class='col-xs-6 padding-0 margin-bottom-d75rem shopinfo' v-for='value in goodLists' goods_id='"+$(this).attr("goods_id")+"'><a href='javascript:;' height='100px' width='200px'><img src='http://47.93.25.230/storage/"+$(this).attr('goods_img')+"' width='180px' height='200px'></a><div class='font-size-1rem'><p class='margin-top-bottom-1rem' ><a v-bind:href='value['href']'>"+$(this).attr('goods_name')+"</a></p><p class=''text-red'><span class=''font-size-d8rem'>￥</span><span class='font-weight-700'>"+$(this).attr('goods_pirce')+"</span></p></div></li>";
+		})
+		$(".padding-top-bottom-1rem").html(str);
+	}
+	
+	function ajax(url,data=''){
+		var datainfo;
+		if(data==''){
+			$.ajax({
+				method:"POST",
+				url:url,
+				dataType: "json",
+				async:false,
+				success:function (res) {
+					datainfo=res;
+				}
+			})
+		}else{
+			$.ajax({
+				method:"POST",
+				url:url,
+				data:data,
+				dataType: "json",
+				async:false,
+				success:function (res) {
+					datainfo=res;
+				},
+			})
+		}
+		return datainfo;
+	}
+	
+	
+	$(document).on("click",".margin-bottom-d75rem",function(){
+		var goods_id=$(this).attr("goods_id");
+		location.href='new-personal-details.html?goods_id='+goods_id;
+	})
+	
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script>
 	mui(".text-center").on('tap','.hover-text-red',function(){
 		var url;
@@ -129,7 +233,6 @@
 		}else if($(this).attr("cls")=='shop'){
 			url='index.html';
 		}	
-	
 	  mui.openWindow({
 	    url:url
 	  });
