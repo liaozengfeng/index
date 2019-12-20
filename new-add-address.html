@@ -22,41 +22,51 @@
 			<form class="mui-input-group">
 				<div class="mui-input-row">
 					<label>收件人：</label>
-					<input type="text" class='consignee' placeholder="请输入姓名">
+					<input type="text" placeholder="请输入姓名" id='add_name'>
 				</div>
 				<div class="mui-input-row">
 					<label>手机号：</label>
-					<input type="number" class='mobile' placeholder="请输入手机号" data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+					<input type="text" class="" id='add_phone' placeholder="请输入手机号" data-input-clear="5" id='add_'><span class="mui-icon mui-icon-clear mui-hidden"></span>
 				</div>
 				<div id="showCityPicker3">
 					<label>地区：</label>
 					<div id="cityResult3" class="ui-alert">
-						<select class="mui-input-clear province" address='province'>
+						<select name="" class="mui-input-clear province" address='province' id='city'>
 							<option value="">--请选择--</option>
 						</select>	
 					</div>
 					<div id="cityResult3" class="ui-alert" >
-						<select class="mui-input-clear city" address='city'>
+						<select name="" class="mui-input-clear city"address='city' id='province'>
 							<option value="">--请选择--</option>
 						</select>	
 					</div>
 					<div id="cityResult3" class="ui-alert">
-						<select class="mui-input-clear county" address='county'>
+						<select name="" class="mui-input-clear county" address='county' id='area'>
 							<option value="">--请选择--</option>
 						</select>	
 					</div>
 				</div>
 				<div class="mui-input-row">
 					<label>详细地址：</label>
-					<input type="text" class="address" placeholder="请输入详细地址" data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+					<input type="text" class="mui-input-clear" placeholder="请输入详细地址"  id='add_url' data-input-clear="5"><span class="mui-icon mui-icon-clear mui-hidden"></span>
 				</div>
 			</form>
+			<div class="mui-content">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<span>设置为默认</span>
+						<div class="mui-switch mui-switch-mini mui-active ">
+							<div class="mui-switch-handle"></div>
+						</div>
+					</li>
+				</ul>
+			</div>
 		</div>
-		<div class="preservation"><a href="javascript:;">保存</a></div>
+		<div class="preservation"><a href="javascript:;" id='add'>保存</a></div>
 		<script src='js/jquery-3.2.1.js'></script>
 		<script src="js/mui.min.js"></script>
 		<script>
-			var url='http://47.93.25.230/origin/index';
+			var url='http://www.wzc.com/app/orderadd';
 			var data=ajax(url);
 			address(ajax(url));
 			function address(data,address='province'){
@@ -101,34 +111,35 @@
 					var data_id={};
 					data_id.pid=$(this).val();
 					info=ajax(url,data_id);
-					address(info,addres);
+					address(info,addres);  
 				}
 			})
 			
-			$(document).on("click",".preservation",function(){
+			
+			$("#add").on('click',function(){
+				// alert(123);
 				var data={};
-				
-				data.user_id=localStorage.getItem("user_id");
-				if(data.user_id==null){
-					location.href='login.html';
-				}else{
-					data.city=$(".city").val();
-					data.county=$(".county").val();
-					data.province=$(".province").val();
-					data.consignee=$(".consignee").val();
-					data.mobile=$(".mobile").val();
-					data.address=$(".address").val();
-					data.is_checked=2;
-					var address_url='http://47.93.25.230/address/addresssave';
-					var res=ajax(address_url,data);
-					if(res.res==1){
-						alert(res.msg);
-						location.href='new-address.html';
-					}else{
-						alert(res.msg);
-					}
-				}
-				
+				data.add_name = $("#add_name").val();
+				data.add_phone = $("#add_phone").val();
+				data.city = $("#city").val();
+				data.province = $("#province").val();
+				data.area = $("#area").val();
+				data.add_url = $("#add_url").val();
+				$.ajax({
+					method:"POST",
+					url:"http://www.wzc.com/app/address",
+					data:data,
+					dataType: "json",
+					async:false,
+					success:function (res) {
+						if(res.res==200){
+							alert('注册成功');
+							// localStorage.setItem("user_id",res.user_id);
+							location.href='new-address.html'
+						}
+					}	
+					
+				})
 			})
 		</script>
 	</body>

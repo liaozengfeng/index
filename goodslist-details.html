@@ -210,7 +210,7 @@
 				var goods_id=info[1];
 				$.ajax({
 					method:"POST",
-					url:'http://app.com/goods/goodsinfo',
+					url:'http://www.wzc.com/app/add',
 					data:{goods_id:goods_id,user_id:user_id},
 					dataType: "json",
 					async:false,
@@ -234,7 +234,7 @@
 					data.goods_id=$(".goods_price").attr('goods_id');
 					data.user_id=localStorage.getItem("user_id");
 					$.ajax({
-						url:'http://app.com/car/car',
+						url:'http://www.wzc.com/app/cat',
 						data:data,
 						method:"POST",
 						dataType: "json",

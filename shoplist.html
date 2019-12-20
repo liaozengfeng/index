@@ -36,10 +36,10 @@
 			<div class="pull-left margin-left-2rem glyphicon-box">
 				<span class="glyphicon glyphicon-chevron-left"></span>
 			</div>
-			<form action="" class=" ">
+			<!-- <form action="" class=" ">
 				<span class="glyphicon glyphicon-search"></span>
 				<input type="text" value="" placeholder="搜索你感兴趣的店铺">
-			</form>
+			</form> -->
 		</header>
 
 		<!-- 商品标签页， -->
@@ -111,6 +111,8 @@
 </html>
 <script>
 	var url='http://47.93.25.230/sort/sortlist';
+
+	// var url='http://www.wzc.com/app/sortlist';
 	var data=ajax(url);
 	address(ajax(url));
 	function address(data,address='province'){

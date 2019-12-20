@@ -42,18 +42,28 @@
 	
 </script>
 <script>
+<<<<<<< Updated upstream
 	url='http://47.93.25.230/address/list';
 	var data={user_id:localStorage.getItem("user_id")};
 	address(ajax(url,data));
+=======
+	url='http://www.wzc.com/app/orderlist';
+	var data=ajax(url);
+	address(ajax(url));
+>>>>>>> Stashed changes
 	function address(data){
 		var str='';
 		$.each(data,function(){
+<<<<<<< Updated upstream
 			if($(this).attr('is_checked')==1){
 				var is_checked='默认';
 			}else{
 				var is_checked='不默认';
 			}
 			str+="<li address_id='"+$(this).attr('address_id')+"'><a><div class='disflex-between'><span><label>"+$(this).attr('consignee')+" </label><span class='is_checked' is_checked='"+$(this).attr('is_checked')+"'>"+is_checked+"</span></span><span class='address_id'>删除 </span></div><div><span>"+$(this).attr('address')+"</span></div></a></li>";
+=======
+			str+="<li><a><div class='disflex-between'><span>收货人:<label>"+$(this).attr('add_name')+"</label></span><span>"+"删除"+"</span></div><div><span>收货地址: "+$(this).attr('add_url')+"</span><span>"+$(this).attr('add_phone')+"</span></div></a></li>";
+>>>>>>> Stashed changes
 		})
 		$(".new-add-address").html(str);
 	}

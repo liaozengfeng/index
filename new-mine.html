@@ -36,7 +36,19 @@
 		<div class="nav-bottom">
 			<div class="new-mine">
 				<div class="mine-photo min-photo-bgimg">
+					<!-- <div id="img"> -->
+						<img  src="images/muwu1.jpg" />
+						<h4>admin</h4>
+					<!-- </div> -->
 					
+					<!-- <img  src="images/timg.png" /> -->
+					
+					<!-- <h4>梨花下的梦</h4> -->
+					<ul class="mine-photo-list">
+						<li><a href="new-mine-grade.html"><p>我的等级</p><h4>普通用户</h4></a></li>
+						<li><p>待结算金额</p><h4>￥<label>1000</label></h4></li>
+						<li><p>已结算金额</p><h4>￥<label>8000</label></h4></li>
+					</ul>
 				</div>
 				
 				<div class="new-mine-title"><a href="javascript:;"><span class="icon iconfont icon-quanbudingdan"></span>全部订单</a></div>
@@ -51,7 +63,7 @@
 				<ul class="mui-table-view">
 					<li class="mui-table-view-cell">
 						<a href="javascript:;" class="mui-navigate-right" abc='news'>
-							我的消息
+							收藏
 						</a>
 					</li>
 					<li class="mui-table-view-cell">
@@ -107,6 +119,42 @@
 		}
 	})
 	
+
+	// var user_id=localStorage.getItem("user_id") || "";
+	// getuserInfo(user_id);
+	
+	// function getuserInfo(user_id){
+	// 	if(user_id == ""){
+	// 		var str='<img  src="images/timg.jpg" /><h4 aa="ww" id="kk">未登入</h4>';
+	// 		$("#img").html(str);
+	// 	}else{
+	// 		// var info={user_id:user_id};
+	// 		// console.log(info);
+	// 		$.ajax({
+	// 			url:'http://www.wzc.com/app/userlist',
+	// 			data:{user_id:user_id},
+	// 			dataType:"json",
+	// 			success:function(res){
+	// 				str="<img src='images/muwu1.jpg'/><h4>"+res.user_name+"</h4>";
+	// 				$("#img").html(str);
+	// 			}
+	// 		})
+	// 	}
+	// }
+		
+		
+
+	$(document).on('tap','#kk',function(){
+		// alert(1);
+		var url;
+		if($(this).attr("aa")=='ww'){
+			url='login.html';
+		}
+	  mui.openWindow({
+	    url:url
+	  });
+	})
+
 	mui(".nav-footer").on('tap','.hover-text-red',function(){
 		var url;
 		if($(this).attr("cls")=='user'){
@@ -130,9 +178,10 @@
 		}else if($(this).attr("def")=='add'){
 			url='new-address.html';
 		}
-	
-	  mui.openWindow({
-	    url:url
-	  });
+		 mui.openWindow({
+			url:url
+		 });
 	}) 
+	
+	
 </script>
