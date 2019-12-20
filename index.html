@@ -92,14 +92,14 @@
 </html>
 
 <script>
-	var gures_url='http://app.com/gures/gures';
+	var gures_url='http://47.93.25.230/gures/gures';
 	var gures_info=ajax(gures_url);
 	var str_gures_info='';
 	$.each(gures_info,function(index){
 		str_gures_info+="<div class='mui-slider-item'><a href='javascript:;'><img src='http://47.93.25.230/storage/"+$(this).attr('gure_img')+"'></a></div>"
 	})
 	$(".mui-slider-group").html(str_gures_info);
-	var sorttop_url='http://app.com/sort/sorttop';
+	var sorttop_url='http://47.93.25.230/sort/sorttop';
 	var sort_info=ajax(sorttop_url);
 	var str_sort_info='';
 	$.each(sort_info,function(index){
@@ -134,7 +134,7 @@
 		$(".pattern-list").empty();
 		var str='<li class="mui-card-footer">';
 		$.each(data,function(index){
-			str+="<div class='mui-card'><a href='goodslist-details.html?id="+$(this).attr('goods_id')+"'><div class='mui-card-header mui-card-media' style='height:40vw;'><img class='w100' src='http://47.93.25.230/storage/"+$(this).attr('goods_img')+"'/></div><div class='mui-card-content'><div class='mui-card-content-inner'><p style='color: #333;'>"+$(this).attr('goods_name')+"</p></div></div><div class='pattern-list__p'><p class='font-color-pink'>￥<label>"+$(this).attr('goods_pirce')+"</label></p><p>库存:<label>"+$(this).attr('goods_stock')+"</label></p></div></a></div>";
+			str+="<div class='mui-card'><a href='new-personal-details.html?id="+$(this).attr('goods_id')+"'><div class='mui-card-header mui-card-media' style='height:40vw;'><img class='w100' src='http://47.93.25.230/storage/"+$(this).attr('goods_img')+"'/></div><div class='mui-card-content'><div class='mui-card-content-inner'><p style='color: #333;'>"+$(this).attr('goods_name')+"</p></div></div><div class='pattern-list__p'><p class='font-color-pink'>￥<label>"+$(this).attr('goods_pirce')+"</label></p><p>库存:<label>"+$(this).attr('goods_stock')+"</label></p></div></a></div>";
 		})
 		 str+='</li>';
 		$(".pattern-list").html(str);

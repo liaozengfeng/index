@@ -74,7 +74,7 @@
 				<span class="icon iconfont icon-gouwuche"></span>
 				<p>加入购物车</p>
 			</li>
-			<li class="buy"><a href="new-buy.html">立即购买</a></li>
+			<li class="buy"><a href="javascript:;">加入收藏</a></li>
 		</ul>
 		<div class="icon-gouCenter"><a href="new-shopping-card.html"><span class="icon iconfont icon-gou"></span></a></div>
 		<script src="js/mui.min.js"></script>
@@ -119,7 +119,7 @@
 				var goods_id=info[1];
 				$.ajax({
 					method:"POST",
-					url:'http://app.com/goods/goodsinfo',
+					url:'http://47.93.25.230/goods/goodsinfo',
 					data:{goods_id:goods_id,user_id:user_id},
 					dataType: "json",
 					async:false,
@@ -147,8 +147,27 @@
 							attr+="</p></div>";
 						})
 						$("#natureCotainer").html(attr);
+		
 					}
 				})
+				$(document).on("click",'.buy',function(){
+					var collect_data={user_id:user_id,goods_id:goods_id};
+					var collect_url='http://47.93.25.230/collect/collect_save';
+					$.ajax({
+						method:"POST",
+						url:collect_url,
+						data:collect_data,
+						dataType: "json",
+						success:function (res) {
+							if(res.res==1){
+								alert(res.msg);
+							}else{
+								alert(res.msg);
+							}
+						}
+					})
+				})
+				
 				$(document).on("click",".a-item",function(){
 					$(this).siblings("a").removeClass('selected');
 					$(this).addClass('selected');
@@ -158,7 +177,6 @@
 					var _id=$(".selected");
 					data.attr_val_id=[];
 					$.each(_id,function () {
-						// data.attr_id=$(this).parent('p').attr('attr_name');
 						data.attr_val_id.push($(this).attr('attr_val_id'));
 					})
 					if (data.attr_val_id=='') {
@@ -168,7 +186,7 @@
 					data.goods_id=goods_id;
 					data.user_id=localStorage.getItem("user_id");
 					$.ajax({
-						url:'http://app.com/car/car',
+						url:'http://47.93.25.230/car/car',
 						data:data,
 						method:"POST",
 						dataType: "json",

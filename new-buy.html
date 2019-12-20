@@ -15,7 +15,7 @@
 		<!--自定义iconfont-->
 		<link rel="stylesheet" type="text/css" href="css/iconfont.css">
 		<link rel="stylesheet" type="text/css" href="css/shopping-cart.css">
-		
+		<script src='js/jquery.min.js'></script>
 	</head>
 
 	<body>
@@ -28,11 +28,11 @@
 				<span class="icon iconfont icon-dizhi"></span>
 				<span class="flex1">
 					<li style="display: flex;justify-content: space-between;width:96%">
-						<span style="flex:1">收货人:<label>某某某</label></span>
-						<span>18368900682</span>
+						<span style="flex:1">收货人:<label id='add_name'></label></span>
+						<span id='mobile'></span>
 					</li>
 					<li>
-						<span>收货地址：上海市浦东新区莱阳路61号</span>
+						<span>地址：<i id='address'></i></span>
 					</li>
 				</span>
 				<span class="mui-icon mui-icon-arrowright"></span>
@@ -40,33 +40,105 @@
 		</div>
 		<div  class="new-min-order new-buy-order">
 			<ul>
-				<li class="buy-order-details">
-					<img src="images/list-ph01.png" />
-					<div class="flex1">
-						<h4>超级大品牌服装，现在够级大品牌服装，现在够买只要998</h4>
-						<p>颜色:<label class="mr-6">经典绮丽款</label>尺寸:<label>XL</label></p>
-						<h5 class="mui-text-right font-color-pink">￥<label>32.00</label></h5>
-						<p class="mui-text-right font-color-gray">x<label>3</label></p>
-					</div>
-				</li>
+				<div id='show'>
+					
+				</div>
+				
+				
 				<li>
 					<span>运费</span>
 					<span class="font-color-gray">￥<label>0.00</label></span>
 				</li>
 				<li class="disflex-between">
 					<span>买付款（含运费）</span>
-					<span class="font-color-gray">￥<label>94.00</label></span>
+					<span class="font-color-gray">￥<label id='price'></label></span>
 				</li>
 			</ul>
-			<div class="mui-input-row" style="margin: 10px 5px;">
-				留言：<textarea id="textarea" rows="5" placeholder="多行文本框"></textarea>
-			</div>
+			
 		</div>
 		<div class="buy__button">
-			<button>总金额：￥<label>134</label></buttons>
+			<button>总金额：￥<label id='prices'></label></buttons>
 			<button class="pay">提交订单</button>
 		</div>
 		<script src="js/mui.min.js"></script>
 	</body>
+
+
+
+
+
+
+<script>
+	$(function(){
+		var url = window.location.href;
+		var info = url.split("=");
+		var data={cat_id:info[1]};
+		var url='http://47.93.25.230/ord/orderlist';
+		var info=ajax(url,data);
+		var str='';
+		var price=0;
+		mui.each(info,function (index,element) {
+			str+="<li class='buy-order-details' goods_id='"+$(this).attr('goods_id')+"'><img src='http://47.93.25.230/storage/"+$(this).attr('goods_img')+"' /><div class='flex1'><h4>"+$(this).attr('goods_name')+"</h4><h5 class='mui-text-right font-color-pink'>￥<label>"+$(this).attr('goods_pirce')+"</label></h5><p class='mui-text-right font-color-gray'>x<label>"+$(this).attr("goods_num")+"</label></p></div></li>";
+			price+=$(this).attr('goods_pirce')*$(this).attr('goods_num');
+		})
+		$("#show").html(str);
+		$("#price").text(price);
+		$("#prices").text(price);		
+		
+		$(document).on("click",".pay",function(){
+			data.user_id=localStorage.getItem("user_id");
+			data.address_id=$('#add_name').attr('address_id');
+			var info=ajax("http://47.93.25.230/ord/ordersave",data);
+			if(info.res==1){
+				alert(info.msg);
+			}else{
+				alert(info.msg);
+			}
+		})
+		
+		var address_url='http://47.93.25.230/address/addresschecked';
+		var address_data={user_id:localStorage.getItem("user_id")};
+		var address_info=ajax(address_url,address_data);
+		$("#add_name").text(address_info.consignee);
+		$("#add_name").attr('address_id',address_info.address_id);
+		$("#address").text(address_info.address);
+		$("#mobile").text(address_info.mobile);
+		
+		
+		function ajax(url,data=''){
+			var datainfo;
+			if(data==''){
+				$.ajax({
+					method:"POST",
+					url:url,
+					dataType: "json",
+					async:false,
+					success:function (res) {
+						datainfo=res;
+					}
+				})
+			}else{
+				$.ajax({
+					method:"POST",
+					url:url,
+					data:data,
+					dataType: "json",
+					async:false,
+					success:function (res) {
+						datainfo=res;
+					},
+				})
+			}
+			return datainfo;
+		}
+	})
+</script>
+
+
+
+
+
+
+
 
 </html>

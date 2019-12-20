@@ -36,30 +36,17 @@
 		<div class="nav-bottom">
 			<div class="new-mine">
 				<div class="mine-photo min-photo-bgimg">
-					<img  src="images/muwu.jpg" />
 					
-					<h4>梨花下的梦</h4>
-					<ul class="mine-photo-list">
-						<li><a href="new-mine-grade.html"><p>我的等级</p><h4>普通用户</h4></a></li>
-						<li><p>待结算金额</p><h4>￥<label>1000</label></h4></li>
-						<li><p>已结算金额</p><h4>￥<label>8000</label></h4></li>
-					</ul>
 				</div>
 				
-				<div class="new-mine-title"><a href="#"><span class="icon iconfont icon-quanbudingdan"></span>全部订单</a></div>
+				<div class="new-mine-title"><a href="javascript:;"><span class="icon iconfont icon-quanbudingdan"></span>全部订单</a></div>
 				<ul class="new-min-title-list">
-					<li><a href="new-mine-order.html"><span class="icon iconfont icon-daishenhe"></span>待审核</a></li>
-					<li><a href="new-mine-order1.html"><span class="icon iconfont icon-daifahuo"></span>待发货</a></li>
-					<li><a href="new-mine-order2.html"><span class="icon iconfont icon-daishouhuo"></span>待收货</a></li>
+					<li><a href="javascript:;"><span class="icon iconfont icon-daishenhe"></span>待审核</a></li>
+					<li><a href="javascript:;"><span class="icon iconfont icon-daifahuo"></span>待发货</a></li>
+					<li><a href="javascript:;"><span class="icon iconfont icon-daishouhuo"></span>待收货</a></li>
 				</ul>
-				
-				<div class="new-mine-title"><a href="new-mine-order3.html"><span class="icon iconfont icon-xiaoshou"></span>我的店铺</a></div>
-				<ul class="new-min-title-list">
-					<li><a href="new-mine-order4.html"><span class="icon iconfont icon-iconpay2"></span>待销售</a></li>
-					<li><a href="new-mine-order5.html"><span class="icon iconfont icon-daijiesuan"></span>待结算</a></li>
-					<li><a href="new-mine-order6.html"><span class="icon iconfont icon-yijiesuan"></span>已结算</a></li>
-					<li><a href="new-mine-order7.html"><span class="icon iconfont icon-huaduo"></span>退款售后</a></li>
-				</ul>
+				<div class="new-mine-title"><a href="new-mine-order3.html"><span class="icon iconfont icon-xiaoshou"></span>我的管理</a></div>
+
 				
 				<ul class="mui-table-view">
 					<li class="mui-table-view-cell">
@@ -101,6 +88,25 @@
 </html>
 
 <script>
+	$(function(){
+		var user_id=localStorage.getItem("user_id");
+		if(user_id==null){
+			$(".mine-photo").html("<img  src='images/muwu.jpg' /><h4><a href='login.html'>请先登录</a></h4>");
+			
+		}else{
+			var data={user_id:user_id};
+			$.ajax({
+                method:"POST",
+                url:"http://47.93.25.230/user/info",
+                data:data,
+                dataType: "json",
+                success:function (res) {
+                    $(".mine-photo").html("<img src='images/muwu.jpg' /><h4><a href='javascript:;'>"+res.user_name+"</a></h4>");
+                }
+            })
+		}
+	})
+	
 	mui(".nav-footer").on('tap','.hover-text-red',function(){
 		var url;
 		if($(this).attr("cls")=='user'){

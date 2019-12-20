@@ -48,36 +48,9 @@
 						
 						<!--商品-->
 						<ul class="commodity_list_term">
-							<li class="select">
-								<em aem="0" cart_id="84"></em>
-								<img src="images/list-ph01.png" />
-								<div class="div_center">
-									<h4>超级大牌品牌服装，现在买只要998</h4>
-									<span>颜色:<label class="mr-6">经典绮丽款</label>尺寸:<label >L</label></span>
-									<p class="now_value"><i>￥</i><b class="qu_su">120.00</b></p>
-								</div>
-								<div class="div_right">
-									<i onclick="reducew(this)">-</i>
-									<span class="zi">1</span>
-									<input type="hidden" value="84">
-									<i onclick="plusw(this)">+</i>
-								</div>
-							</li>
-							<li class="select">
-								<em aem="0" cart_id="84"></em>
-								<img src="images/list-ph01.png" / class="clicks">
-								<div class="div_center">
-									<h4 class='clicks'>超级大牌品牌服装，现在买只要998</h4>
-									<span>50斤</span>
-									<p class="now_value"><i>￥</i><b class="qu_su">10.00</b></p>
-								</div>
-								<div class="div_right">
-									<i onclick="reducew(this)">-</i>
-									<span class="zi">1</span>
-									<input type="hidden" value="84">
-									<i onclick="plusw(this)">+</i>
-								</div>
-							</li>
+							
+							
+							
 						</ul>
 					</div>
 				</div>
@@ -89,7 +62,7 @@
 			<div style="height:55px;"></div>
 			<div class="settle_box">
 				<ul class="all_check select">
-					<li><span id="all_pitch_on"></span><div>全选</div></li>
+					<li><span id="all_pitch_on" eam='0'></span><div>全选</div></li>
 				</ul>
 				<ul class="total_amount">
 					<li style="display: flex;">合计：<p id="total_price">¥<b>0</b></p></li>
@@ -141,7 +114,6 @@
 					var Total = parseFloat(totalH) - parseFloat(tn); /* 总价格减该商品总数价格  */
 					$("#total_price b").text(Total.toFixed(2));
 				}
-
 			};
 			/* 加  */
 			function plusMod(e, totalH, mod) {
@@ -227,112 +199,55 @@
 				$("#total_price b").text(TotalJe.toFixed(2)); /* 合计金额  */
 			};
 
+		//计算价格
+		
+		function price(){
+			 var _this=$("li .pitch_on");
+			 var price_num=0;
+			 mui.each(_this,function (index,element) {
+			 	price_num+=$(this).parents("li[class='select']").find("b[class='qu_su']").text()*$(this).parents("li[class='select']").find("span[class='zi']").text();
+			 })
+			 $("#total_price").find("b").text(price_num);
+		}
+				
+
 			//选择结算商品
-
-			$(".select em").click(function() {
-				var su = $(this).attr("aem");
-				var carts_id = $(this).attr("cart_id");
-				var totalH = $("#total_price b").text(); /* 合计金额  */
-				if(su == 0) {
-					/* 单选商品  */
-					if($(this).hasClass("pitch_on")) {
-						/*去该店全选*/
-						$(this).parents("ul").siblings(".select").find("em").removeClass("pitch_on");
-						/*去底部全选*/
-						$("#all_pitch_on").removeClass("pitch_on");
-						$(this).removeClass("pitch_on");
-						reduceMod($(this), totalH);
-						cart_id[carts_id] = "";
-						delete cart_id[carts_id];
-					} else {
-						$(this).addClass("pitch_on");
-						var n = $(this).parents("ul").children().find(".pitch_on");
-						var n1 = $(this).parents("ul").children();
-						plusMod($(this), totalH, 0, noX);
-						cart_id[carts_id] = "";
-						/*该店商品全选中时*/
-						if(n.length == n1.length) {
-							$(this).parents("ul").siblings(".select").find("em").addClass("pitch_on");
-						}
-						/*商品全部选中时*/
-						var fot = $(".commodity_list_box  .pitch_on");
-						var fot1 = $(".commodity_list_box em");
-						if(fot.length == fot1.length)
-							$("#all_pitch_on").addClass("pitch_on");
-					}
-				} else {
-					/* 全选该店铺  */
-					if($(this).hasClass("pitch_on")) {
-						/*去底部全选*/
-						$("#all_pitch_on").removeClass("pitch_on");
-						$(this).removeClass("pitch_on");
-
-						commodityReduceMod($(this), totalH);
-						$(this).parent().siblings("ul").find("span").removeClass("pitch_on");
-						delete cart_id[carts_id];
-					} else {
-						commodityReduceMod($(this), totalH);
-
-						$(this).addClass("pitch_on");
-
-						$(this).parent().siblings("ul").find("span").addClass("pitch_on");
-
-						if(plus != NaN && plus != undefined) {
-							totalH = parseFloat(totalH) - parseFloat(plus);
-						}
-
-						commodityPlusMod($(this), totalH);
-						cart_id[carts_id] = "";
-						/*商品全部选中时*/
-						var fot = $(".commodity_list_box  .pitch_on");
-						var fot1 = $(".commodity_list_box  span");
-						if(fot.length == fot1.length)
-							$("#all_pitch_on").addClass("pitch_on");
-
-					}
+			$(document).on("click",".select em",function() {
+				var us=$(this).attr('aem');
+				if(us ==0 ){
+					$(this).addClass('pitch_on');
+					$(this).attr('aem',1);
+				}else{
+					$(this).removeClass('pitch_on');
+					$(this).attr('aem',0);
 				}
-
-				//计算选择数值
-				number();
-
+				price();
 			});
+			
+			
 			/* 底部全选  */
 
-			var bot = 0;
-			$("#all_pitch_on").click(function() {
-				if(bot == 0) {
+			$(document).on("click","#all_pitch_on",function() {
+				var us=$(this).attr('eam');
+				if(us == 0) {
 					$(this).addClass("pitch_on");
-					allThis.removeClass("pitch_on");
-					allThis.addClass("pitch_on");
+					$(this).attr('eam',1);
+					var _this=$("li em");
+					mui.each(_this,function (index,element) {
+						$(this).addClass("pitch_on");
+					})
 					/*总价格*/
-					commodityWhole();
-					bot = 1;
-					//重新加入属性对象
-					for(var key in cart_id_copy) {
-						cart_id[key] = "";
-					}
 				} else {
 					$(this).removeClass("pitch_on");
-					allThis.removeClass("pitch_on");
-					$("#total_price b").text("0");
-					bot = 0;
-					//移除全部对象
-					for(var key in cart_id) {
-						delete cart_id[key];
-					}
+					var _this=$("li em");
+					mui.each(_this,function (index,element) {
+						$(this).removeClass("pitch_on");
+					})
+
 				}
-				//计算选择数值
-				number();
+				price();
 			});
 
-			function number() {
-				var num = 0;
-				for(var key in cart_id) {
-					num++;
-				}
-				//将选择的放入到计算里面
-				//$("#confirm_cart").html("结算("+num+")");
-			}
 
 			/* 编辑商品  */
 			var topb = 0;
@@ -352,15 +267,14 @@
 					allThis.removeClass("pitch_on"); /* 取消所有选择  */
 					$("#all_pitch_on").removeClass("pitch_on"); /* 取消所有选择  */
 					$("#total_price b").text("0"); /*合计价格清零*/
-
 				}
-
 			});
 			/* 加减  */
 
-			function reducew(obj) {
+			$(document).on("click",".reducew",function () {
+				var goods_id=$(this).parents(".select").attr("goods_id");
 				//减
-				var $this = $(obj);
+				var $this = $(this);
 				var totalH = $("#total_price b").text(); /* 合计金额  */
 				var ise = $this.siblings("span").text();
 				var gc_id = $this.siblings("input").val();
@@ -382,11 +296,13 @@
 					}
 
 				}
-			};
+				ajax(n,goods_id);
+			});
 
-			function plusw(obj) {
+			$(document).on("click",".plusw",function(){
+				var goods_id=$(this).parents(".select").attr("goods_id");
 				//加
-				var $this = $(obj);
+				var $this = $(this);
 				var totalH = $("#total_price b").text(); /* 合计金额  */
 				var ise = $this.siblings("span").text();
 				var gc_id = $this.siblings("input").val();
@@ -399,43 +315,99 @@
 					plusMod(mo, totalH, 2, noX);
 					noX = 0;
 				}
-			}
-
-			//删除 
-			function big_cart_remove() {
-				$(".commodity_list_term .pitch_on").parent().remove();
-				$(".commodity_list  > em.pitch_on").parents(".commodity_box").remove();
+				ajax(n,goods_id);
+			})
+			
+			
+			
+			function ajax(n,goods_id){
+				var data={goods_num:n,goods_id:goods_id};
+				data.user_id=localStorage.getItem("user_id");
+				$.ajax({
+                method:"POST",
+                url:"http://47.93.25.230/car/num",
+                data:data,
+                dataType: "json",
+                success:function (res) {
+                    if(res.res==1){
+						
+					}
+                }
+            })
 			}
 		</script>
 
 	</body>
 
 </html>
+
 <script>
-	mui(".nav-footer").on('tap','.hover-text-red',function(){
-		var url;
-		if($(this).attr("cls")=='user'){
-			url='new-mine.html';
-		}else if($(this).attr("cls")=='sort'){
-			url='shoplist.html';
-		}else if($(this).attr("cls")=='cart'){
-			url='shoplist.html';
-		}else if($(this).attr("cls")=='shop'){
-			url='index.html';
-		}	
 	
-	  mui.openWindow({
-		url:url
-	  });
-	}) 
-	mui(".settle_box").on('tap','.settle_btn',function(){
-		var url;
-		if($(this).attr("acc")=='sett'){
-			url='new-buy.html';
-		}
-	
-	  mui.openWindow({
-		url:url
-	  });
-	}) 
+	$(function(){
+		var data={};
+		data.user_id=localStorage.getItem("user_id");
+			$.ajax({
+                method:"POST",
+                url:"http://47.93.25.230/car/catlist",
+                data:data,
+                dataType: "json",
+                success:function (res) {
+                   var str='';
+				   $.each(res,function(index){
+					   str+="<li class='select' goods_id='"+$(this).attr('goods_id')+"' cat_id='"+$(this).attr('cat_id')+"'><em aem='0' cart_id='84'></em><img src='http://47.93.25.230/storage/"+$(this).attr("goods_img")+"' /><div class='div_center'><h4>"+$(this).attr("goods_name")+"</h4>";
+						$.each($(this).attr('attr_val_id'),function(index){
+							str+="<span>"+$(this).attr("attr_name")+":<label class='mr-6'>"+$(this).attr("attr_val")+"  ";
+						})
+						str+="<p class='now_value'><i>￥</i><b class='qu_su'>"+$(this).attr("goods_pirce")+"</b></p></div><div class='div_right'><i class='reducew'>-</i><span class='zi'>"+$(this).attr("goods_num")+"</span><input type='hidden' value='84'><i class='plusw'>+</i></div></li></div>";
+				   })
+				   $(".commodity_list_term").html(str);
+                }
+            })
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		mui(".nav-footer").on('tap','.hover-text-red',function(){
+			var url;
+			if($(this).attr("cls")=='user'){
+				url='new-mine.html';
+			}else if($(this).attr("cls")=='sort'){
+				url='shoplist.html';
+			}else if($(this).attr("cls")=='cart'){
+				url='shoplist.html';
+			}else if($(this).attr("cls")=='shop'){
+				url='index.html';
+			}	
+		
+		  mui.openWindow({
+			url:url
+		  });
+		}) 
+		mui(".settle_box").on('tap','.settle_btn',function(){
+			var url;
+			if($(this).attr("acc")=='sett'){
+				url='new-buy.html';
+			}
+			var cat_id='';
+			$.each($("em[class='pitch_on']"),function(index){
+				cat_id+=$(this).parents('.select').attr('cat_id')+",";
+			})
+			if(cat_id==''){
+				alert('请至少选择一件');
+			}else{
+				cat_id=cat_id.substr(0,cat_id.length-1);
+				location.href='new-buy.html?cat_id='+cat_id;
+			}
+			
+		}) 
+	})
+
 </script>

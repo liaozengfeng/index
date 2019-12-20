@@ -21,8 +21,8 @@
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">地址</h1>
 		</header>
-		<ul class="new-add-address">
-
+		<ul class='new-add-address'>
+			
 		</ul>
 		<div class="add-ress__button"><a href="javascript:;" add='newadd'>添加新地址</a></div>
 		<script src="js/mui.min.js"></script>
@@ -42,17 +42,38 @@
 	
 </script>
 <script>
-	url='http://ecshop.com/order/list';
-	var data=ajax(url);
-	address(ajax(url));
+	url='http://47.93.25.230/address/list';
+	var data={user_id:localStorage.getItem("user_id")};
+	address(ajax(url,data));
 	function address(data){
-		// $(".new-add-address").empty();
 		var str='';
 		$.each(data,function(){
-			str+="<li><a><div class='disflex-between'><span>收货人:<label>"+$(this).attr('consignee')+"</label></span><span>"+"删除"+"</span></div><div><span>收货地址: "+$(this).attr('address')+"</span><span>"+$(this).attr('mobile')+"</span></div></a></li>";
+			if($(this).attr('is_checked')==1){
+				var is_checked='默认';
+			}else{
+				var is_checked='不默认';
+			}
+			str+="<li address_id='"+$(this).attr('address_id')+"'><a><div class='disflex-between'><span><label>"+$(this).attr('consignee')+" </label><span class='is_checked' is_checked='"+$(this).attr('is_checked')+"'>"+is_checked+"</span></span><span class='address_id'>删除 </span></div><div><span>"+$(this).attr('address')+"</span></div></a></li>";
 		})
 		$(".new-add-address").html(str);
 	}
+	$(document).on("click",".address_id",function(){
+		var data={user_id:localStorage.getItem("user_id")};
+		data.address_id=$(this).parents('li').attr('address_id');
+		$(this).parents('li').hide();
+		var add_url='http://47.93.25.230/address/addressdel';
+		var res=ajax(add_url,data);
+		if(res.res==1){
+			alert(res.msg);
+			location.href='new-address.html';
+		}else{
+			alert(res.msg);
+		}
+	})
+	$(document).on("click",".is_checked",function(){
+		
+	})
+	
 	function ajax(url,data=''){
 		var datainfo;
 		if(data==''){
