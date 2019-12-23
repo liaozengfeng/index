@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="utf-8">
 		<title>search</title>
@@ -10,11 +9,11 @@
 		<!--标准mui.css-->
 		<link rel="stylesheet" href="css/mui.min.css">
 		<!--App自定义的css-->
-		<link rel="stylesheet" type="text/css" href="css/app.css" />
+		<link rel="stylesheet" type="text/css" href="css/app.css">
 		<link rel="stylesheet" type="text/css" href="css/icons-extra.css">
 		<script src="js/mui.min.js"></script>
 		<link href="css/mui.min.css" rel="stylesheet"/>
-		<!--自定义iconfont-->
+		<!-- 自定义iconfont -->
 		<link rel="stylesheet" type="text/css" href="css/iconfont.css">
 		<link rel="stylesheet" type="text/css" href="css/shopping-cart.css">
 		<script type="text/javascript">
@@ -22,7 +21,6 @@
 			var i = 0;
 			//金额总和
 			var money = 0;
-			
 			//计算合计价格
 			var cart_money = new Object();
 			//全部商品ID
@@ -36,34 +34,18 @@
 		<div class="nav-bottom">
 			<div class="new-mine">
 				<div class="mine-photo min-photo-bgimg">
-					<!-- <div id="img"> -->
-						<img  src="images/muwu1.jpg" />
-						<h4>admin</h4>
-					<!-- </div> -->
 					
-					<!-- <img  src="images/timg.png" /> -->
-					
-					<!-- <h4>梨花下的梦</h4> -->
-					<ul class="mine-photo-list">
-						<li><a href="new-mine-grade.html"><p>我的等级</p><h4>普通用户</h4></a></li>
-						<li><p>待结算金额</p><h4>￥<label>1000</label></h4></li>
-						<li><p>已结算金额</p><h4>￥<label>8000</label></h4></li>
-					</ul>
 				</div>
 				
-				<div class="new-mine-title"><a href="javascript:;"><span class="icon iconfont icon-quanbudingdan"></span>全部订单</a></div>
-				<ul class="new-min-title-list">
-					<li><a href="javascript:;"><span class="icon iconfont icon-daishenhe"></span>待审核</a></li>
-					<li><a href="javascript:;"><span class="icon iconfont icon-daifahuo"></span>待发货</a></li>
-					<li><a href="javascript:;"><span class="icon iconfont icon-daishouhuo"></span>待收货</a></li>
-				</ul>
-				<div class="new-mine-title"><a href="new-mine-order3.html"><span class="icon iconfont icon-xiaoshou"></span>我的管理</a></div>
+				<div class="new-mine-title"><a href="javascript:;" class='order'><span class="icon iconfont icon-quanbudingdan"></span>全部订单</a></div>
+				
+			
 
 				
 				<ul class="mui-table-view">
 					<li class="mui-table-view-cell">
 						<a href="javascript:;" class="mui-navigate-right" abc='news'>
-							收藏
+							我的收藏
 						</a>
 					</li>
 					<li class="mui-table-view-cell">
@@ -74,6 +56,7 @@
 				</ul>
 			</div>
 		</div>
+
 		<div class="nav-footer">
 			<a href="javascript:;" class='hover-text-red'  cls='shop'>
 				<span class="mui-icon mui-icon-home"></span>
@@ -92,11 +75,10 @@
 				<span class="mui-tab-label">我的</span>
 			</a>
 		</div>
-		
+
 		<script src="js/jquery.min.js"></script>
 
 	</body>
-
 </html>
 
 <script>
@@ -104,7 +86,6 @@
 		var user_id=localStorage.getItem("user_id");
 		if(user_id==null){
 			$(".mine-photo").html("<img  src='images/muwu.jpg' /><h4><a href='login.html'>请先登录</a></h4>");
-			
 		}else{
 			var data={user_id:user_id};
 			$.ajax({
@@ -113,48 +94,12 @@
                 data:data,
                 dataType: "json",
                 success:function (res) {
-                    $(".mine-photo").html("<img src='images/muwu.jpg' /><h4><a href='javascript:;'>"+res.user_name+"</a></h4>");
+                    $(".mine-photo").html("<img src='images/abc.png' /><h4><a href='javascript:;'>"+res.user_name+"</a></h4>");
                 }
             })
 		}
 	})
 	
-
-	// var user_id=localStorage.getItem("user_id") || "";
-	// getuserInfo(user_id);
-	
-	// function getuserInfo(user_id){
-	// 	if(user_id == ""){
-	// 		var str='<img  src="images/timg.jpg" /><h4 aa="ww" id="kk">未登入</h4>';
-	// 		$("#img").html(str);
-	// 	}else{
-	// 		// var info={user_id:user_id};
-	// 		// console.log(info);
-	// 		$.ajax({
-	// 			url:'http://www.wzc.com/app/userlist',
-	// 			data:{user_id:user_id},
-	// 			dataType:"json",
-	// 			success:function(res){
-	// 				str="<img src='images/muwu1.jpg'/><h4>"+res.user_name+"</h4>";
-	// 				$("#img").html(str);
-	// 			}
-	// 		})
-	// 	}
-	// }
-		
-		
-
-	$(document).on('tap','#kk',function(){
-		// alert(1);
-		var url;
-		if($(this).attr("aa")=='ww'){
-			url='login.html';
-		}
-	  mui.openWindow({
-	    url:url
-	  });
-	})
-
 	mui(".nav-footer").on('tap','.hover-text-red',function(){
 		var url;
 		if($(this).attr("cls")=='user'){
@@ -171,6 +116,11 @@
 	    url:url
 	  });
 	}) 
+	$(document).on("click",'.order',function(){
+		mui.openWindow({
+		  url:'new-mine-order5.html'
+		});
+	})
 	mui(".mui-table-view").on('tap','.mui-navigate-right',function(){
 		var url;
 		if($(this).attr("abc")=='news'){
@@ -178,10 +128,9 @@
 		}else if($(this).attr("def")=='add'){
 			url='new-address.html';
 		}
-		 mui.openWindow({
-			url:url
-		 });
-	}) 
-	
-	
+
+	  mui.openWindow({
+	    url:url
+	  });
+	})
 </script>

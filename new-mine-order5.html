@@ -27,28 +27,7 @@
 			<h1 class="mui-title">我的订单</h1>
 		</header>
 		<div class="mui-content new-min-order">
-			<ul>
-				<li>
-					<span class="time">2015-11-15 22:55:59</span>
-					<span class="state">待结算</span>
-				</li>
-				<li>
-					<img src="images/list-ph01.png" />
-					<div class="flex1">
-						<h4>超级大品牌服装，现在够级大品牌服装，现在够买只要998</h4>
-						<p>颜色:<label class="mr-6">经典绮丽款</label>尺寸:<label>XL</label></p>
-						<h5 class="mui-text-right font-color-pink">￥<label>32.00</label></h5>
-						<p class="mui-text-right font-color-gray">x<label>3</label></p>
-					</div>
-				</li>
-				<li>
-					<span>商品总额</span>
-					<span class="font-color-gray">￥<label>94.00</label></span>
-				</li>
-				<li>
-					<button class="payment">去结算</button>
-				</li>
-			</ul>
+			
 		</div>
 		<script src="js/mui.min.js"></script>
 				<script src="js/jquery.min.js"></script>
@@ -57,21 +36,21 @@
 		$(function(){
 			var user_data={user_id:localStorage.getItem("user_id")};
 			var order_url='http://47.93.25.230/order/order_list';
+			// var order_url='http://app.com/order/order_list';
 			var order_info=ajax(order_url,user_data);
 			var order_str='';
-			$.each(order_info,function(){
+			$.each(order_info,function(index){
 				if($(this).attr('order_status')==0){
 					var resl='待付款';
 				}else if ($(this).attr('order_status')==1) {
 					var resl='待发货'
 				} else{
-					var resl='待评价'
+					var resl='待评价';
 				}
 				order_str+="<ul><li><span class='time'>"+$(this).attr('order_sn')+"</span><span class='state'>"+resl+"</span></li>";
 				$.each($(this).attr('order_shop'),function(){
-					order_str+="<li><img src='http://47.93.25.230/storage/"+$(this).attr('goods_img')+"' /><div class='flex1'><h4>"+$(this).attr('goods_name')+"</h4><h5 class='mui-text-right font-color-pink'>￥<label>"+$(this).attr('goods_pirce')+"</label></h5><p class='mui-text-right font-color-gray'>x<label>"+$(this).attr('goods_num')+"</label></p></div></li>";
+					order_str+="<li><img src='http://47.93.25.230/storage/"+$(this).attr('goods_img')+"' width='100px' height='100px' /><div class='flex1'><h4>"+$(this).attr('goods_name')+"</h4><h5 class='mui-text-right font-color-pink'>￥<label>"+$(this).attr('goods_pirce')+"</label></h5><p class='mui-text-right font-color-gray'>x<label>"+$(this).attr('goods_num')+"</label></p></div></li>";
 				})
-				
 				order_str+="<li><span>商品总额</span><span class='font-color-gray'>￥<label>"+$(this).attr('money')+"</label></span></li><li><button class='payment'>去结算</button></li></ul>";
 			})
 			$(".mui-content").html(order_str);

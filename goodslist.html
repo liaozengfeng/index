@@ -38,9 +38,9 @@
 		<header class="xx-header text-center header fixed-top font-size-1rem width-auto  bg-white ">
 			<span class="glyphicon glyphicon-home xjp-pull-left margin-top-1d2rem margin-left-1d6rem " ></span>
 			<div class="search xjp-inline-block content-box h-1rem line-height-1rem pading-top-bottom-d5rem   bg-ccc border-radius-d5rem">
-				<span class="iconfont icon-search padding-left-1rem font-size-d8rem"></span>
-				<input type="text" placeholder="搜索店铺内的商品" class="w-23d5rem line-height-1rem padding-0 margin-0 border-none bg-ccc">
+				<input type='text' placeholder="php 1903A 拳打村霸组研发" disabled="disabled" class="w-23d5rem line-height-1rem padding-0 margin-0 border-none bg-ccc" id='server'>
 			</div>
+			<br>
 			<span class="glyphicon glyphicon-list pull-right margin-top-1d2rem margin-right-1d6rem"></span>
 		</header>
 		<!-- =======End header ======== -->
@@ -48,24 +48,16 @@
 		<!-- 商品列表 -->
 		<div class="goods margin-top-3d9rem margin-bottom-6rem">
 			<ul class="xx-nav-tabs xx-nav">
-				<li class="text-center">
-					<a href="javascript:;" order='goods_id' class="xjp-inline-block font-size-1d2rem active "><span>全部</span></a>
+				<li class="text-center abcd">
+					<a href="javascript:;" order='goods_id' class="xjp-inline-block font-size-1d2rem active aaaa"><span>全部</span></a>
 				</li>
-				<li class="text-center"><a href="javascript:;" order='hits' class="xjp-inline-block font-size-1d2rem">人气</a></li>
-				<li class="text-center"><a href="javascript:;" order='goods_pirce' class="xjp-inline-block font-size-1d2rem">价格</a></li>
-				<li class="text-center"><a href="javascript:;" order='goods_id' class="xjp-inline-block font-size-1d2rem">最新</a></li>
+				<li class="text-center abcd"><a href="javascript:;" order='hits' class="xjp-inline-block font-size-1d2rem aaaa">人气</a></li>
+				<li class="text-center abcd"><a href="javascript:;" order='goods_pirce' class="xjp-inline-block font-size-1d2rem aaaa">价格</a></li>
+				<li class="text-center abcd"><a href="javascript:;" order='goods_id' class="xjp-inline-block font-size-1d2rem aaaa">最新</a></li>
 			</ul>
 			<section class="bg-f8 padding-top-bottom-1rem  clearfix" style="">
 				<ul class="clearfix  goodslist  margin-auto" id="goods_list">
-					<li class="col-xs-6 padding-0 margin-bottom-d75rem" v-for="value in goodLists" >
-						<a v-bind:href='value["href"]'>
-							<img v-bind:src='value["src"]' v-bind:alt='value["alt"]' v-bind:title='value["title"]'>
-						</a>
-						<div class="font-size-1rem ">
-							<p class="margin-top-bottom-1rem "><a v-bind:href='value["href"]'>{{value["info"]}}</a></p>
-							<p class="text-red"><span class="font-size-d8rem">￥</span><span class="font-weight-700">{{value["price"]}}</span></p>
-						</div>
-					</li>
+
 				</ul>
 				
 			</section>
@@ -125,9 +117,9 @@
 	var usrl=window.location.href;
 	var sort_id=usrl.split("=");
 	where.sort_id=sort_id[1];
-	url='http://www.wzc.com/app/goodslist';
+	url='http://47.93.25.230/goods/goodslist';
 	var data=ajax(url,where);
-	address(ajax(url));
+	address(data);
 	function address(data){
 		$(".padding-top-bottom-1rem").empty();
 		var str='';
@@ -164,13 +156,12 @@
 		return datainfo;
 	}
 	
-	
 	$(document).on("click",".margin-bottom-d75rem",function(){
 		var goods_id=$(this).attr("goods_id");
 		location.href='new-personal-details.html?goods_id='+goods_id;
 	})
 	
-	$(document).on("click",".xjp-inline-block",function(){
+	$(document).on("click",".aaaa",function(){
 		var order=$(this).attr("order");
 		var data={};
 		data.order=order;

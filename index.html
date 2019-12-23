@@ -92,14 +92,14 @@
 </html>
 
 <script>
-	var gures_url='http://www.wzc.com/app/gures';
+	var gures_url='http://47.93.25.230/gures/gures';
 	var gures_info=ajax(gures_url);
 	var str_gures_info='';
 	$.each(gures_info,function(index){
 		str_gures_info+="<div class='mui-slider-item'><a href='javascript:;'><img src='http://47.93.25.230/storage/"+$(this).attr('gure_img')+"'></a></div>"
 	})
 	$(".mui-slider-group").html(str_gures_info);
-	var sorttop_url='http://www.wzc.com/app/sort';
+	var sorttop_url='http://47.93.25.230/sort/sorttop';
 	var sort_info=ajax(sorttop_url);
 	var str_sort_info='';
 	$.each(sort_info,function(index){
@@ -108,7 +108,7 @@
 	$(".pattern-con-icon").html(str_sort_info);
 	$(document).on("click",".mui-table-view-cell",function(){
 		var sort_id=$(this).attr('sort_id');
-		location.href='new-personal-details.html?sort_id='+sort_id;
+		location.href='goodslist.html?sort_id='+sort_id;
 	})
 	mui(".nav-footer").on('tap','.hover-text-red',function(){
 		var url;
@@ -127,7 +127,7 @@
 	  });
 	}) 
 
-	url='http://www.wzc.com/app/list';
+	url='http://47.93.25.230/goods/goodslist';
 	var data=ajax(url);
 	address(ajax(url));
 	function address(data){
